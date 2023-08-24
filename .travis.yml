@@ -17,3 +17,14 @@ after_success:
   - docker build -t abhinavprakash/multi-nginx ./nginx
   - docker build -t abhinavprakash/multi-worker ./worker
 
+
+# login into docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+# take the abve images and push to dockerhub
+  - docker push abhinavprakash/multi-client
+  - docker push abhinavprakash/multi-worker
+  - docker push abhinavprakash/multi-nginx
+  - docker push abhinavprakash/multi-server
+ 
+
